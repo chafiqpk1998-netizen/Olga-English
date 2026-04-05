@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Olga English | Professional English Teacher Online</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -15,7 +16,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #0f172a; /* Dark Luxury Background */
+      background-color: #0f172a; /* Dark luxury background from second code */
       color: #f1f5f9;
       line-height: 1.5;
       scroll-behavior: smooth;
@@ -27,12 +28,14 @@
       padding: 0 32px;
     }
 
-    /* Header / Nav */
+    /* Header / Nav - mixed style */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 24px 0;
+      flex-wrap: wrap;
+      gap: 20px;
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
@@ -66,7 +69,7 @@
     .btn-primary {
       background: #2563eb;
       color: white;
-      padding: 14px 32px;
+      padding: 12px 28px;
       border-radius: 12px;
       font-weight: 600;
       text-decoration: none;
@@ -74,6 +77,7 @@
       transition: 0.3s;
       border: none;
       cursor: pointer;
+      font-size: 1rem;
     }
 
     .btn-primary:hover {
@@ -82,13 +86,30 @@
       box-shadow: 0 10px 25px rgba(37,99,235,0.3);
     }
 
-    /* Hero Section */
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #3b82f6;
+      color: #60a5fa;
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(59,130,246,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section - mixing from second code */
     .hero {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       align-items: center;
       gap: 60px;
-      padding: 100px 0;
+      padding: 80px 0 60px 0;
     }
 
     .hero-badge {
@@ -104,7 +125,7 @@
     }
 
     .hero-content h1 {
-      font-size: 4rem;
+      font-size: 3.8rem;
       font-weight: 900;
       line-height: 1.1;
       margin-bottom: 24px;
@@ -114,11 +135,10 @@
     .hero-content p {
       font-size: 1.2rem;
       color: #94a3b8;
-      margin-bottom: 40px;
+      margin-bottom: 32px;
       max-width: 550px;
     }
 
-    /* Teacher Image Box */
     .hero-image-box {
       position: relative;
       border-radius: 30px;
@@ -134,14 +154,14 @@
       object-fit: cover;
     }
 
-    /* Floating Stats Bar */
+    /* Floating Stats Bar (dark version) */
     .hero-stats {
       margin-top: 40px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       background: rgba(255,255,255,0.02);
-      padding: 24px;
+      padding: 20px 24px;
       border-radius: 20px;
       border: 1px solid rgba(255,255,255,0.05);
     }
@@ -154,15 +174,362 @@
 
     .stat-item p {
       font-size: 0.75rem;
-      color: #64748b;
+      color: #94a3b8;
       text-transform: uppercase;
       font-weight: 700;
+    }
+
+    /* sections general */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: white;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: #94a3b8;
+      max-width: 700px;
+      margin: 0 auto 48px auto;
+      font-size: 1.1rem;
+    }
+
+    /* About Grid (dark) */
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 1.2;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .about-text p {
+      color: #cbd5e1;
+    }
+
+    .feature-list {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      list-style: none;
+      font-weight: 500;
+      color: #e2e8f0;
+    }
+
+    .feature-list i {
+      color: #3b82f6;
+      font-size: 1.3rem;
+      width: 28px;
+    }
+
+    .about-image {
+      flex: 0.8;
+      background: #1e293b;
+      border-radius: 32px;
+      padding: 40px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .about-image i {
+      font-size: 6rem;
+      color: #60a5fa;
+    }
+
+    /* Services Cards (dark mode) */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+      margin-top: 20px;
+    }
+
+    .service-card {
+      background: #1e293b;
+      border-radius: 28px;
+      padding: 32px 24px;
+      transition: 0.25s;
+      border: 1px solid #334155;
+      text-align: center;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: #3b82f6;
+      background: #253249;
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      color: #60a5fa;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: white;
+    }
+
+    .service-card p {
+      color: #cbd5e6;
+    }
+
+    /* Pricing Cards dark */
+    .pricing-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .pricing-card {
+      background: #1e293b;
+      border-radius: 32px;
+      padding: 32px 24px;
+      flex: 1;
+      min-width: 260px;
+      border: 1px solid #334155;
+      transition: 0.2s;
+      text-align: center;
+    }
+
+    .popular {
+      border-top: 6px solid #3b82f6;
+      position: relative;
+      background: #1e293b;
+    }
+
+    .price {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: white;
+      margin: 16px 0;
+    }
+
+    .price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #94a3b8;
+    }
+
+    .pricing-card ul {
+      text-align: left;
+      margin: 24px 0;
+      list-style: none;
+    }
+
+    .pricing-card li {
+      margin: 12px 0;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: #cbd5e1;
+    }
+
+    .pricing-card li i {
+      color: #22c55e;
+      width: 22px;
+    }
+
+    /* Testimonials dark */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+
+    .testimonial-card {
+      background: #1e293b;
+      border-radius: 28px;
+      padding: 28px;
+      border: 1px solid #334155;
+    }
+
+    .stars {
+      color: #fbbf24;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-card p {
+      font-style: normal;
+      margin-bottom: 20px;
+      color: #cbd5e6;
+    }
+
+    .student-name {
+      font-weight: 700;
+      color: white;
+    }
+
+    .student-title {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    /* Contact Form Dark Mix */
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      background: #111827;
+      border-radius: 48px;
+      padding: 48px;
+      margin-top: 20px;
+      border: 1px solid #334155;
+    }
+
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      color: white;
+    }
+
+    .contact-info p {
+      color: #94a3b8;
+    }
+
+    .contact-details {
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #cbd5e1;
+    }
+
+    .contact-item i {
+      width: 28px;
+      color: #60a5fa;
+      font-size: 1.4rem;
+    }
+
+    .contact-form {
+      flex: 1;
+      background: #0f172a;
+      padding: 32px;
+      border-radius: 32px;
+      border: 1px solid #334155;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #334155;
+      border-radius: 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      background: #1e293b;
+      color: white;
+      transition: 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* Footer dark */
+    footer {
+      background: #020617;
+      color: #cbd5e1;
+      padding: 48px 0 24px;
+      margin-top: 40px;
+      border-top: 1px solid #1e293b;
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-col p {
+      margin-top: 16px;
+      max-width: 260px;
+      color: #94a3b8;
+    }
+
+    .footer-col h4 {
+      color: white;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .footer-col a {
+      display: block;
+      color: #94a3b8;
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: white;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid #1e293b;
+      font-size: 0.85rem;
+      color: #64748b;
     }
 
     @media (max-width: 968px) {
       .hero { grid-template-columns: 1fr; text-align: center; padding: 60px 0; }
       .hero-content h1 { font-size: 3rem; }
       .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .navbar {
+        flex-direction: column;
+      }
+      .container {
+        padding: 0 24px;
+      }
+      .contact-wrapper {
+        padding: 28px;
+      }
     }
   </style>
 </head>
@@ -177,6 +544,8 @@
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#pricing">Pricing</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
       </div>
       <a href="#contact" class="btn-primary" style="padding: 10px 20px; font-size: 0.85rem;">Book a Lesson</a>
     </div>
@@ -184,31 +553,244 @@
 </header>
 
 <main>
+  <!-- Hero Section - MIX: original text + second code layout & image -->
   <div class="container">
     <div class="hero">
       <div class="hero-content">
         <div class="hero-badge">✨ Certified English Expert</div>
-        <h1>Master English with <span style="color: #60a5fa;">Confidence</span></h1>
-        <p>Achieve your goals with personalized 1-on-1 coaching. I help professionals and students worldwide unlock their full potential in English.</p>
-        
+        <h1>Learn English with <span style="color: #60a5fa;">Confidence</span></h1>
+        <p>Hi, I'm Olga! I help students from around the world master English through personalized online lessons. Whether you're learning for work, travel, or exams - I'm here to guide you every step of the way.</p>
         <div class="btn-group">
-          <a href="#contact" class="btn-primary">Get Started Now</a>
+          <a href="#contact" class="btn-primary">Book Free Trial</a>
+          <a href="#services" class="btn-outline" style="margin-left: 16px;">Explore Services</a>
         </div>
-        
         <div class="hero-stats">
-          <div class="stat-item"><h3>500+</h3><p>Students</p></div>
-          <div class="stat-item"><h3>5+</h3><p>Years Exp</p></div>
-          <div class="stat-item"><h3>98%</h3><p>Success</p></div>
+          <div class="stat-item"><h3>500+</h3><p>Students Taught</p></div>
+          <div class="stat-item"><h3>5+</h3><p>Years Experience</p></div>
+          <div class="stat-item"><h3>98%</h3><p>Success Rate</p></div>
           <div class="stat-item"><h3>50+</h3><p>Countries</p></div>
         </div>
       </div>
-
       <div class="hero-image-box">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" alt="Olga teaching at her desk">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" alt="Olga professional English teacher">
       </div>
     </div>
   </div>
+
+  <!-- About Section (Passionate about helping you succeed) -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>Passionate About Helping You Succeed</h2>
+          <p>With over 5 years of teaching experience, I've helped hundreds of students from more than 50 countries achieve their English language goals. My approach combines structured learning with fun, engaging conversations.</p>
+          <ul class="feature-list">
+            <li><i class="fas fa-certificate"></i> TESOL Certified Teacher</li>
+            <li><i class="fas fa-language"></i> Native-level English proficiency</li>
+            <li><i class="fas fa-briefcase"></i> Specialized in Business & Exam English</li>
+            <li><i class="fas fa-chalkboard-user"></i> Personalized lesson plans for every student</li>
+          </ul>
+          <div style="margin-top: 28px;">
+            <a href="#contact" class="btn-primary">Start Learning Today →</a>
+          </div>
+        </div>
+        <div class="about-image">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <p style="margin-top: 20px; font-weight: 500; color:#cbd5e6;">✨ Olga – Your guide to fluency</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" style="background: #0a0f1c;">
+    <div class="container">
+      <h2 class="section-title">My Services</h2>
+      <div class="section-sub">What I Offer — Tailored English lessons designed to meet your specific needs and goals</div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-comments"></i></div>
+          <h3>Conversational English</h3>
+          <p>Improve your speaking fluency through natural conversations on topics you enjoy.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Business English</h3>
+          <p>Professional language skills for meetings, presentations, and workplace communication.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Exam Preparation</h3>
+          <p>IELTS, TOEFL, Cambridge exams - structured preparation with practice tests.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-globe"></i></div>
+          <h3>General English</h3>
+          <p>Build strong foundations in grammar, vocabulary, reading & writing skills.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing">
+    <div class="container">
+      <h2 class="section-title">Simple, Transparent Pricing</h2>
+      <div class="section-sub">Choose the plan that fits your learning journey</div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Single Lesson</h3>
+          <div class="price">$25 <span>per hour</span></div>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> 1-on-1 personalized lesson</li>
+            <li><i class="fas fa-check-circle"></i> Flexible scheduling</li>
+            <li><i class="fas fa-check-circle"></i> Lesson materials included</li>
+            <li><i class="fas fa-check-circle"></i> Homework assignments</li>
+          </ul>
+          <a href="#contact" class="btn-outline" style="width: 100%; text-align: center;">Get Started</a>
+        </div>
+        <div class="pricing-card popular">
+          <div style="background:#2563eb20; border-radius: 40px; padding: 4px 12px; display: inline-block; font-size:0.8rem; font-weight:600; color:#60a5fa; margin-bottom:12px;">⭐ Most Popular</div>
+          <h3>5 Lesson Package</h3>
+          <div class="price">$110 <span>total</span></div>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Save $15</li>
+            <li><i class="fas fa-check-circle"></i> 1-on-1 personalized lessons</li>
+            <li><i class="fas fa-check-circle"></i> Flexible scheduling</li>
+            <li><i class="fas fa-check-circle"></i> Lesson materials included</li>
+            <li><i class="fas fa-check-circle"></i> Progress tracking</li>
+            <li><i class="fas fa-check-circle"></i> Email support</li>
+          </ul>
+          <a href="#contact" class="btn-primary" style="width: 100%; text-align: center;">Get Started</a>
+        </div>
+        <div class="pricing-card">
+          <h3>10 Lesson Package</h3>
+          <div class="price">$200 <span>total</span></div>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Save $50</li>
+            <li><i class="fas fa-check-circle"></i> 1-on-1 personalized lessons</li>
+            <li><i class="fas fa-check-circle"></i> Flexible scheduling</li>
+            <li><i class="fas fa-check-circle"></i> Premium materials</li>
+            <li><i class="fas fa-check-circle"></i> Progress tracking</li>
+            <li><i class="fas fa-check-circle"></i> Priority email support</li>
+            <li><i class="fas fa-check-circle"></i> Free consultation</li>
+          </ul>
+          <a href="#contact" class="btn-outline" style="width: 100%; text-align: center;">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" style="background: #0a0f1c;">
+    <div class="container">
+      <h2 class="section-title">Testimonials</h2>
+      <div class="section-sub">What My Students Say — Real feedback from students around the world</div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Olga helped me improve my English for work presentations. Her patience and teaching style made me feel confident speaking in meetings. Highly recommended!"</p>
+          <div class="student-name">Maria from Spain</div>
+          <div class="student-title">Business Professional</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"I needed IELTS 7.0 for university admission. Olga prepared me thoroughly and I achieved 7.5! Her exam strategies were incredibly helpful."</p>
+          <div class="student-name">Hiroshi from Japan</div>
+          <div class="student-title">IELTS Student</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Learning English with Olga is fun! She makes every lesson interesting and adapts to my pace. My conversational skills have improved dramatically."</p>
+          <div class="student-name">Ana from Brazil</div>
+          <div class="student-title">Travel Enthusiast</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Form Section: Let's Connect (Dark theme with contact form) -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <h3>Let's Connect</h3>
+          <p>Have questions about lessons? Want to discuss your learning goals? I'm here to help! Reach out and I'll get back to you within 24 hours.</p>
+          <div class="contact-details">
+            <div class="contact-item"><i class="fas fa-envelope"></i> <span>olga.english@email.com</span></div>
+            <div class="contact-item"><i class="fas fa-phone-alt"></i> <span>+1 (555) 123-4567</span></div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i> <span>Online - Worldwide</span></div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm" action="#" method="post">
+            <div class="form-group">
+              <input type="text" placeholder="Your name" id="name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="your@email.com" id="email" required>
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Subject" id="subject">
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Tell me about your English learning goals..." id="message"></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%;">Send Message</button>
+            <p style="font-size: 0.75rem; margin-top: 12px; text-align:center; color:#94a3b8;">I'll reply within 24h — let's start your journey!</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3 style="color:white; margin-bottom:12px;">Olga English</h3>
+        <p>Helping students worldwide achieve English fluency through personalized online lessons.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#">About</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#testimonials">Testimonials</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">Conversational English</a>
+        <a href="#">Business English</a>
+        <a href="#">Exam Preparation</a>
+        <a href="#">General English</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a>olga.english@email.com</a>
+        <a>+1 (555) 123-4567</a>
+        <a>Online - Worldwide</a>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2026 Olga English. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    if(name) {
+      alert(`Thank you ${name}! Olga will reach out to you within 24 hours. 😊`);
+      document.getElementById('contactForm').reset();
+    } else {
+      alert('Please enter your name to get started.');
+    }
+  });
+</script>
 </body>
 </html>
