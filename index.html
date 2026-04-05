@@ -1,256 +1,156 @@
-import { useState, useEffect } from 'react';
-import { 
-  Menu, X, Star, CheckCircle, Clock, Globe, BookOpen, 
-  MessageCircle, Video, Award, Calendar, ChevronRight,
-  Mail, Phone, MapPin, Send
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { toast } from 'sonner';
-import './App.css';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olga English | AI-Powered Learning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2); }
+        .hero-gradient { background: radial-gradient(circle at top right, #f8fafc, #e0e7ff); }
+        .ai-float { animation: floating 4s ease-in-out infinite; }
+        @keyframes floating { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(3deg); } }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
 
-function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [bookingDialogOpen, setBookingDialogOpen] = useState(false);
-  const [contactDialogOpen, setContactDialogOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
-  };
-
-  const handleBookingSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success('Booking request sent! Olga will contact you soon.');
-    setBookingDialogOpen(false);
-  };
-
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success('Message sent! Olga will reply within 24 hours.');
-    setContactDialogOpen(false);
-  };
-
-  const navLinks = [
-    { label: 'Home', id: 'hero' },
-    { label: 'About', id: 'about' },
-    { label: 'Services', id: 'services' },
-    { label: 'Pricing', id: 'pricing' },
-    { label: 'Testimonials', id: 'testimonials' },
-    { label: 'Contact', id: 'contact' },
-  ];
-
-  const services = [
-    {
-      icon: <MessageCircle className="w-8 h-8" />,
-      title: 'Conversational English',
-      description: 'Improve your speaking fluency through natural conversations on topics you enjoy.',
-    },
-    {
-      icon: <BookOpen className="w-8 h-8" />,
-      title: 'Business English',
-      description: 'Professional language skills for meetings, presentations, and workplace communication.',
-    },
-    {
-      icon: <Award className="w-8 h-8" />,
-      title: 'Exam Preparation',
-      description: 'IELTS, TOEFL, Cambridge exams - structured preparation with practice tests.',
-    },
-    {
-      icon: <Globe className="w-8 h-8" />,
-      title: 'General English',
-      description: 'Comprehensive lessons covering grammar, vocabulary, reading, and writing.',
-    },
-  ];
-
-  const pricingPlans = [
-    {
-      name: 'Single Lesson',
-      price: '$25',
-      period: 'per hour',
-      features: [
-        '1-on-1 personalized lesson',
-        'Flexible scheduling',
-        'Lesson materials included',
-        'Homework assignments',
-      ],
-      popular: false,
-    },
-    {
-      name: '5 Lesson Package',
-      price: '$110',
-      period: '5 hours',
-      features: [
-        'Save $15',
-        '1-on-1 personalized lessons',
-        'Flexible scheduling',
-        'Lesson materials included',
-        'Progress tracking',
-        'Email support',
-      ],
-      popular: true,
-    },
-    {
-      name: '10 Lesson Package',
-      price: '$200',
-      period: '10 hours',
-      features: [
-        'Save $50',
-        '1-on-1 personalized lessons',
-        'Flexible scheduling',
-        'Premium materials',
-        'Progress tracking',
-        'Priority email support',
-        'Free consultation',
-      ],
-      popular: false,
-    },
-  ];
-
-  const testimonials = [
-    {
-      name: 'Maria from Spain',
-      role: 'Business Professional',
-      content: 'Olga helped me improve my English for work presentations. Her patience and teaching style made me feel confident speaking in meetings. Highly recommended!',
-      rating: 5,
-    },
-    {
-      name: 'Hiroshi from Japan',
-      role: 'IELTS Student',
-      content: 'I needed IELTS 7.0 for university admission. Olga prepared me thoroughly and I achieved 7.5! Her exam strategies were incredibly helpful.',
-      rating: 5,
-    },
-    {
-      name: 'Ana from Brazil',
-      role: 'Travel Enthusiast',
-      content: 'Learning English with Olga is fun! She makes every lesson interesting and adapts to my pace. My conversational skills have improved dramatically.',
-      rating: 5,
-    },
-  ];
-
-  const stats = [
-    { value: '500+', label: 'Students Taught' },
-    { value: '5+', label: 'Years Experience' },
-    { value: '98%', label: 'Success Rate' },
-    { value: '50+', label: 'Countries' },
-  ];
-
-  return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-soft' : 'bg-transparent'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-            <a href="#hero" className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-lg">O</span>
-              </div>
-              <span className="font-bold text-xl text-gray-900">Olga English</span>
-            </a>
-
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className="text-gray-600 hover:text-blue-600 font-medium transition-colors"
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="hidden lg:flex items-center gap-4">
-              <Button 
-                variant="outline" 
-                onClick={() => setContactDialogOpen(true)}
-                className="border-blue-600 text-blue-600 hover:bg-blue-50"
-              >
-                Contact Me
-              </Button>
-              <Button 
-                onClick={() => setBookingDialogOpen(true)}
-                className="bg-blue-600 hover:bg-blue-700 text-white"
-              >
-                Book a Lesson
-              </Button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+    <nav class="fixed top-0 w-full z-50 glass py-4 px-6 flex justify-between items-center shadow-sm">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold">O</div>
+            <span class="font-extrabold text-xl tracking-tighter">Olga.AI</span>
         </div>
+        <div class="hidden md:flex gap-8 font-semibold text-sm">
+            <a href="#about" class="hover:text-indigo-600 transition">About</a>
+            <a href="#services" class="hover:text-indigo-600 transition">Services</a>
+            <a href="#pricing" class="hover:text-indigo-600 transition">Pricing</a>
+        </div>
+        <button onclick="showNotif()" class="bg-indigo-600 text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-indigo-700 transition">Book Free Lesson</button>
+    </nav>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden bg-white border-t">
-            <div className="px-4 py-4 space-y-3">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className="block w-full text-left py-2 text-gray-600 hover:text-blue-600 font-medium"
-                >
-                  {link.label}
-                </button>
-              ))}
-              <div className="pt-4 space-y-3">
-                <Button 
-                  variant="outline" 
-                  className="w-full border-blue-600 text-blue-600"
-                  onClick={() => { setContactDialogOpen(true); setIsMenuOpen(false); }}
-                >
-                  Contact Me
-                </Button>
-                <Button 
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                  onClick={() => { setBookingDialogOpen(true); setIsMenuOpen(false); }}
-                >
-                  Book a Lesson
-                </Button>
-              </div>
+    <section class="min-h-screen hero-gradient pt-32 pb-20 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="animate__animated animate__fadeInLeft">
+                <div class="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-4 py-1 rounded-full text-xs font-bold mb-6">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i> AI-ENHANCED COACHING
+                </div>
+                <h1 class="text-6xl md:text-7xl font-extrabold leading-tight mb-6">Learn English with <span class="text-indigo-600">Confidence.</span></h1>
+                <p class="text-lg text-slate-600 mb-10 max-w-lg">Hi, I'm Olga! I help students worldwide master English through personalized AI-integrated lessons. Whether for work, exams, or travel.</p>
+                <div class="flex gap-4">
+                    <button class="bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-2 hover:bg-black transition">
+                        Start Learning <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                
+                <div class="mt-12 flex gap-10 border-t pt-8 border-slate-200">
+                    <div><p class="text-2xl font-black">500+</p> <p class="text-xs text-slate-400 font-bold uppercase">Students</p></div>
+                    <div><p class="text-2xl font-black">5+</p> <p class="text-xs text-slate-400 font-bold uppercase">Years Exp</p></div>
+                    <div><p class="text-2xl font-black">98%</p> <p class="text-xs text-slate-400 font-bold uppercase">Success</p></div>
+                </div>
             </div>
-          </div>
-        )}
-      </nav>
 
-      {/* Hero Section */}
-      <section id="hero" className="bg-gradient-hero pt-24 lg:pt-32 pb-16 lg:pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
-                <Star className="w-4 h-4 fill-current" />
-                <span>Professional English Teacher</span>
-              </div>
-              <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Learn English with{' '}
-                <span className="text-gradient">Confidence</span>
-              </h1>
-              <p className="text-lg lg:text-xl text-gray-600 max-w-lg">
-                Hi, I'm Olga! I help students from around the world master English through 
-                personalized online lessons. Whether you're learning for work, travel, or exams - 
-               
+            <div class="flex justify-center relative animate__animated animate__zoomIn">
+                <div class="absolute inset-0 bg-indigo-400 blur-[120px] opacity-20"></div>
+                <svg class="ai-float w-full max-w-[400px]" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#6366F1" d="M40,-64.5C53.3,-58.5,66.5,-49.5,74.5,-37.1C82.5,-24.6,85.3,-8.8,81.9,5.5C78.4,19.8,68.7,32.7,58.1,43.7C47.4,54.7,35.8,63.9,22.6,68.5C9.4,73.1,-5.5,73.1,-20.3,69.5C-35.1,65.9,-49.8,58.7,-59.8,47.8C-69.8,36.8,-75.2,22.2,-77,7.1C-78.7,-7.9,-76.8,-23.4,-69.3,-36.1C-61.8,-48.7,-48.7,-58.4,-35.1,-64.3C-21.5,-70.1,-7.3,-72,6.1,-82.5C19.5,-93.1,38.9,-112.2,40,-64.5Z" transform="translate(100 100)" />
+                    <circle cx="80" cy="85" r="8" fill="white" />
+                    <circle cx="120" cy="85" r="8" fill="white" />
+                    <circle cx="80" cy="85" r="4" fill="#1e1b4b" />
+                    <circle cx="120" cy="85" r="4" fill="#1e1b4b" />
+                    <path d="M85 125 Q100 145 115 125" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4 tracking-tight">Specialized Programs</h2>
+                <p class="text-slate-500">Tailored lessons designed for your specific goals.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-[40px] border border-slate-100 hover:border-indigo-600 transition-all group">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 mb-6 group-hover:bg-indigo-600 group-hover:text-white transition">
+                        <i data-lucide="briefcase"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Business English</h3>
+                    <p class="text-slate-500 text-sm">Master professional communication for meetings and presentations.</p>
+                </div>
+                <div class="p-8 rounded-[40px] border border-slate-100 hover:border-indigo-600 transition-all group">
+                    <div class="w-14 h-14 bg-pink-50 rounded-2xl flex items-center justify-center text-pink-600 mb-6 group-hover:bg-pink-600 group-hover:text-white transition">
+                        <i data-lucide="graduation-cap"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">IELTS/TOEFL Prep</h3>
+                    <p class="text-slate-500 text-sm">Achieve your target score with proven strategies and practice tests.</p>
+                </div>
+                <div class="p-8 rounded-[40px] border border-slate-100 hover:border-indigo-600 transition-all group">
+                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition">
+                        <i data-lucide="languages"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Conversational</h3>
+                    <p class="text-slate-500 text-sm">Speak naturally on diverse topics and build real-world fluency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 px-6 bg-slate-50">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-4xl font-black mb-16">Investment in Your Future</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-10 rounded-[40px] shadow-sm border border-slate-100">
+                    <p class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Starter</p>
+                    <h3 class="text-4xl font-black mb-8">$25<span class="text-sm text-slate-400">/hr</span></h3>
+                    <ul class="text-left space-y-4 mb-10 text-sm text-slate-600 font-semibold">
+                        <li><i data-lucide="check" class="inline w-4 h-4 text-green-500 mr-2"></i> 1-on-1 Lesson</li>
+                        <li><i data-lucide="check" class="inline w-4 h-4 text-green-500 mr-2"></i> Flexible Schedule</li>
+                    </ul>
+                    <button class="w-full py-4 border-2 border-slate-100 rounded-2xl font-bold hover:bg-slate-50 transition">Book Now</button>
+                </div>
+                <div class="bg-indigo-600 p-10 rounded-[40px] shadow-2xl shadow-indigo-200 text-white scale-110">
+                    <p class="text-xs font-black text-indigo-200 uppercase tracking-widest mb-4">Most Popular</p>
+                    <h3 class="text-4xl font-black mb-8">$200<span class="text-sm text-indigo-200">/10 hrs</span></h3>
+                    <ul class="text-left space-y-4 mb-10 text-sm font-semibold">
+                        <li><i data-lucide="check" class="inline w-4 h-4 text-white mr-2"></i> Save $50</li>
+                        <li><i data-lucide="check" class="inline w-4 h-4 text-white mr-2"></i> Priority Support</li>
+                        <li><i data-lucide="check" class="inline w-4 h-4 text-white mr-2"></i> AI Progress Tracking</li>
+                    </ul>
+                    <button class="w-full py-4 bg-white text-indigo-600 rounded-2xl font-black hover:bg-slate-100 transition">Get Started</button>
+                </div>
+                <div class="bg-white p-10 rounded-[40px] shadow-sm border border-slate-100">
+                    <p class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Standard</p>
+                    <h3 class="text-4xl font-black mb-8">$110<span class="text-sm text-slate-400">/5 hrs</span></h3>
+                    <ul class="text-left space-y-4 mb-10 text-sm text-slate-600 font-semibold">
+                        <li><i data-lucide="check" class="inline w-4 h-4 text-green-500 mr-2"></i> Save $15</li>
+                        <li><i data-lucide="check" class="inline w-4 h-4 text-green-500 mr-2"></i> Progress Report</li>
+                    </ul>
+                    <button class="w-full py-4 border-2 border-slate-100 rounded-2xl font-bold hover:bg-slate-50 transition">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="notif-bar" class="fixed bottom-10 left-1/2 -translate-x-1/2 glass px-8 py-4 rounded-3xl shadow-2xl flex items-center gap-4 transition-all duration-500 translate-y-40 opacity-0 z-[100]">
+        <div class="bg-indigo-600 text-white p-2 rounded-full"><i data-lucide="bell" class="w-4 h-4"></i></div>
+        <p class="font-bold text-sm">Signal sent! Olga will contact you in <span class="text-indigo-600">5 minutes.</span></p>
+    </div>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Notification Function
+        function showNotif() {
+            const bar = document.getElementById('notif-bar');
+            bar.classList.remove('translate-y-40', 'opacity-0');
+            setTimeout(() => {
+                bar.classList.add('translate-y-40', 'opacity-0');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
